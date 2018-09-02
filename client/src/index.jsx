@@ -11,8 +11,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       moviesByGenre: [],
-      movies: [{ deway: "movies" }],
-      favorites: [{ deway: "favorites" }],
+      movies: [],
+      favorites: [],
       showFaves: false
     };
 
@@ -31,8 +31,10 @@ class App extends React.Component {
     axios
       .get("/movies")
       .then(res => {
-        console.log('RES.DATA in axios.getMOVIES', res.data)        
-        this.setState({ movies: res.data })})
+        // console.log('RES.DATA in axios.getMOVIES', res.data)  
+        this.setState({ movies: res.data })
+        // console.log('this is the STATE', this.state.movies)
+      })
       .catch(err => console.error(`err in getMovies in index.jsx: ${err}`));
   }
 

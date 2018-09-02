@@ -18,7 +18,7 @@ app.use(express.static(__dirname + '/../client/dist'));
 app.get('/movies', function(req, res){
   apiHelpers.getMovies() 
     .then((data) => {
-      console.log('this is the data in get/movies in server', data.data.results )
+      // console.log('this is the data in get/movies in server', data.data.results )
       res.send(data.data.results)
     })
     .catch((err) => {
