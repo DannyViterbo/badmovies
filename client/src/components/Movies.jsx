@@ -18,7 +18,7 @@ class Movies extends React.Component {
 
 
         {/* Make this list dynamic! */}
-
+        
 
         <li className="movie_item">
           <img src="https://lh3.googleusercontent.com/97gnjRiv2zIRnDupzfxYFoI-6zlIK3jKgb6KOCDf_tjWkY9epbITdSFIbiKhuccOqQ=w300" />

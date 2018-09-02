@@ -8,6 +8,7 @@ class Search extends React.Component {
     };
   }
   getGenres() {
+    console.log('thess are the genres', this.state.genres)
     //make an axios request in this component to get the list of genres from your endpoint GET GENRES
   }
 
