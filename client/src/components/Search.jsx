@@ -20,8 +20,10 @@ class Search extends React.Component {
 
         {/* Make the select options dynamic from genres !!! */}
         {/* How can you tell which option has been selected from here? */}
-
+        
         <select>
+          
+
           <option value="theway">The Way</option>
           <option value="thisway">This Way</option>
           <option value="thatway">That Way</option>

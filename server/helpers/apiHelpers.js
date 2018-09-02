@@ -9,9 +9,9 @@ const { API_KEY } = require("../../config.js");
 // https://developers.themoviedb.org/3/discover/movie-discover
 // Get your API Key and save it in your config file
 
-const getMovieGenres = genre => {
-  let queryString = { api_key: API_KEY, language: "en-US" };
-  return axios.get(`https://api.themoviedb.org/3/genre/movie/list`, {
+const getMoviesByGenre = genre => {
+  let queryString = { api_key: API_KEY, language: "en-US", with_genre: genre, sort_by: "vote_average.asc" };
+  return axios.get(`https://api.themoviedb.org/3/discover/movie`, {
     params: queryString
   });
 };
@@ -24,8 +24,11 @@ const getMovies = () => {
 };
 
 
-const getMoviesByGenre = genre => {
-  console.log(`genre in getMoviesByGenre apiHelper: ${genre}`);
+const getMovieGenres = genre => {
+    let queryString = { api_key: API_KEY, language: "en-US"};
+    return axios.get(`https://api.themoviedb.org/3/genre/movie/list`, {
+      params: queryString
+    });
 };
 
 // Don't forget to export your functions and require them within your server file

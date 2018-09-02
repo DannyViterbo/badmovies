@@ -38,6 +38,15 @@ app.get('/search', function(req, res) {
   // https://api.themoviedb.org/3/discover/movie
 
   // and sort them by horrible votes using the search parameters in the API
+  apiHelpers.getMoviesByGenres(genreID) 
+  .then((data) => {
+    // console.log('this is the data in get/search in server', data.data.results )
+    res.send(data.data.results)
+  })
+  .catch((err) => {
+    console.error("Error in get/movies in server", err);
+    res.send(err)
+  })
 });
 
 app.get('/genres', function(req, res) {
@@ -46,6 +55,15 @@ app.get('/genres', function(req, res) {
   // use this endpoint, which will also require your API key: https://api.themoviedb.org/3/genre/movie/list
 
   // send back
+  apiHelpers.getMoviesGenres() 
+  .then((data) => {
+    // console.log('this is the data in get/genres in server', data.data.results )
+    res.send(data.data.results)
+  })
+  .catch((err) => {
+    console.error("Error in get/movies in server", err);
+    res.send(err)
+  })
 });
 
 app.post('/save', function(req, res) {
