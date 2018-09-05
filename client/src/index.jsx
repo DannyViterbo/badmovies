@@ -27,7 +27,7 @@ class App extends React.Component {
   }
   // make an axios request to your server on the GET SEARCH endpoint
   getMovies() {
-    console.log("hitting the getMOVIES in client");
+    // console.log("hitting the getMOVIES in client");
     axios
       .get("/movies")
       .then(res => {
@@ -37,6 +37,8 @@ class App extends React.Component {
       })
       .catch(err => console.error(`err in getMovies in index.jsx: ${err}`));
   }
+  
+  
 
   saveMovie() {
     console.log("you saved this to your favorites");

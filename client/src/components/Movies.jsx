@@ -16,7 +16,7 @@ handleClick(e) {
   render() {
     return (
       <ul className="movies">
-        {console.log("These is them props", this.props.movies)}
+        {/* {console.log("These is them props", this.props.movies)} */}
         {this.props.movies.map(movie => {
           return (
             <li key={movie.id} className="movie_item" onClick={()=> this.handleClick(movie)} >

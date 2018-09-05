@@ -55,10 +55,10 @@ app.get('/genres', function(req, res) {
   // use this endpoint, which will also require your API key: https://api.themoviedb.org/3/genre/movie/list
 
   // send back
-  apiHelpers.getMoviesGenres() 
+  apiHelpers.getMovieGenres() 
   .then((data) => {
-    // console.log('this is the data in get/genres in server', data.data.results )
-    res.send(data.data.results)
+    // console.log('this is the data in get/genres in server', res.data.genres )
+    res.send(data.data.genres)
   })
   .catch((err) => {
     console.error("Error in get/movies in server", err);
