@@ -29,6 +29,7 @@ app.get('/movies', function(req, res){
 
 
 app.get('/search', function(req, res) {
+  // console.log('this ithe req in agpp.get', req.query)
   // get the search genre     
 
   // https://www.themoviedb.org/account/signup
@@ -38,9 +39,9 @@ app.get('/search', function(req, res) {
   // https://api.themoviedb.org/3/discover/movie
 
   // and sort them by horrible votes using the search parameters in the API
-  apiHelpers.getMoviesByGenres(genreID) 
+  apiHelpers.getMoviesByGenre(req.query) 
   .then((data) => {
-    // console.log('this is the data in get/search in server', data.data.results )
+    console.log('this is the data in get/search in server', data )
     res.send(data.data.results)
   })
   .catch((err) => {

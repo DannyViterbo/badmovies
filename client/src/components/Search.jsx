@@ -5,8 +5,12 @@ class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      genres: []
+      genres: [],
+      genreID: ""
     };
+    this.getGenres = this.getGenres.bind(this)
+    this.handleSearch = this.handleSearch.bind(this)
+    this.handleSelectChange = this.handleSelectChange.bind(this)
   }
 
   componentDidMount() {
@@ -28,6 +32,31 @@ class Search extends React.Component {
       .catch(err => console.error(`err in getGenres in search.jsx: ${err}`));
   }
 
+handleSearch() {
+ 
+  console.log('this is the handle search ', this.state.genreID)
+  //send and axios request to server
+  axios.get("/search", {
+        params: {
+          id: this.state.genreID
+          }
+        })
+       //set the returned res to state
+       .then(res => {
+        console.log('this isthe res in the then in handlesearch ', res)
+         this.props.setState({ movies: res.data })
+         })
+        //catch error
+       .catch(err => console.error('error in handleSearch in search.jsx: ', err))
+}
+
+handleSelectChange(e) {
+  console.log('this is the genre id in select ', e.target.value)
+  this.setState({
+    genreID: e.target.value 
+  })
+}
+
   render() {
     return (
       <div className="search">
@@ -36,23 +65,22 @@ class Search extends React.Component {
         >
           {this.props.showFaves ? "Show Results" : "Show Favorites"}
         </button>
+
+      
         <br /> <br />
 
         {/* Make the select options dynamic from genres !!! */}
         {/* How can you tell which option has been selected from here? */}
 
         <select onChange={this.handleSelectChange}>
-          {this.state.genres.map(genre => (
-            <option key={genre.id} value={genre.id}>
-              {genre.name}
-            </option>
-          ))}
+          {this.state.genres.map(genre => (<option key={genre.id} value={genre.id}>{genre.name}</option>))}
         </select>
 
         <br />
         <br />
+        {/* on click handleSearch */}
+        <button onClick={this.handleSearch}>Search</button>
 
-        <button>Search</button>
       </div>
     );
   }

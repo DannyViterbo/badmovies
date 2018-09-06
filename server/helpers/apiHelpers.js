@@ -10,7 +10,8 @@ const { API_KEY } = require("../../config.js");
 // Get your API Key and save it in your config file
 
 const getMoviesByGenre = genre => {
-  let queryString = { api_key: API_KEY, language: "en-US", with_genre: genre, sort_by: "vote_average.asc" };
+  console.log('this is the genre in the apihelper ', genre)
+  let queryString = { api_key: API_KEY, language: "en-US", with_genres: genre, sort_by: "vote_average.asc" };
   return axios.get(`https://api.themoviedb.org/3/discover/movie`, {
     params: queryString
   });
