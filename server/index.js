@@ -41,7 +41,7 @@ app.get('/search', function(req, res) {
   // and sort them by horrible votes using the search parameters in the API
   apiHelpers.getMoviesByGenre(req.query) 
   .then((data) => {
-    console.log('this is the data in get/search in server', data )
+    console.log('this is the data in get/search in server', data.data.results)
     res.send(data.data.results)
   })
   .catch((err) => {

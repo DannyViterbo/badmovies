@@ -42,10 +42,10 @@ handleSearch() {
           }
         })
        //set the returned res to state
-       .then(res => {
-        console.log('this isthe res in the then in handlesearch ', res)
-         this.props.setState({ movies: res.data })
-         })
+       .then( res => {
+       // console.log("this is the data in the then in handle search ", res.data),
+        this.props.setMovie(res.data)
+       })
         //catch error
        .catch(err => console.error('error in handleSearch in search.jsx: ', err))
 }

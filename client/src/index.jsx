@@ -20,6 +20,7 @@ class App extends React.Component {
     this.getMovies = this.getMovies.bind(this);
     this.saveMovie = this.saveMovie.bind(this);
     this.deleteMovie = this.deleteMovie.bind(this);
+    this.setMovie = this.setMovie.bind(this);
   }
 
   componentDidMount() {
@@ -38,6 +39,12 @@ class App extends React.Component {
       .catch(err => console.error(`err in getMovies in index.jsx: ${err}`));
   }
   
+  setMovie(movies) {
+    console.log('these are the movies being passed in by the handle search ', movies)
+    this.setState({
+      movies: movies
+    })
+  }
   
 
   saveMovie() {
@@ -68,6 +75,7 @@ class App extends React.Component {
           <Search
             swapFavorites={this.swapFavorites}
             showFaves={this.state.showFaves}
+            setMovie={this.setMovie}
           />
           <Movies
             movies={

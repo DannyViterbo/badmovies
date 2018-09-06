@@ -11,7 +11,7 @@ const { API_KEY } = require("../../config.js");
 
 const getMoviesByGenre = genre => {
   console.log('this is the genre in the apihelper ', genre)
-  let queryString = { api_key: API_KEY, language: "en-US", with_genres: genre, sort_by: "vote_average.asc" };
+  let queryString = { api_key: API_KEY, language: "en-US", with_genres: genre.id, sort_by: "vote_average.asc" };
   return axios.get(`https://api.themoviedb.org/3/discover/movie`, {
     params: queryString
   });
