@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var request = require('request')
 var app = express();
+var db = require("../db/sql/index.js")
 
 //Helpers
 var apiHelpers = require('./helpers/apiHelpers.js');
@@ -41,7 +42,7 @@ app.get('/search', function(req, res) {
   // and sort them by horrible votes using the search parameters in the API
   apiHelpers.getMoviesByGenre(req.query) 
   .then((data) => {
-    console.log('this is the data in get/search in server', data.data.results)
+    // console.log('this is the data in get/search in server', data.data.results)
     res.send(data.data.results)
   })
   .catch((err) => {
@@ -68,7 +69,12 @@ app.get('/genres', function(req, res) {
 });
 
 app.post('/save', function(req, res) {
-
+  var movie = req.body
+  db.save(movie)
+    .then(() => {
+      console.log('hey budy this is the data ')
+    })
+    .catch((err) => console.err(err))
 });
 
 app.post('/delete', function(req, res) {

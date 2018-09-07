@@ -18,12 +18,12 @@ class Search extends React.Component {
   }
 
   getGenres() {
-    console.log("these are the genres", this.state.genres);
+    // console.log("these are the genres", this.state.genres);
     // make an axios request in this component to get the list of genres from your endpoint GET GENRES
     axios
       .get("/genres")
       .then(res => {
-        console.log("this is the res in axios get in getgenres", res),
+        // console.log("this is the res in axios get in getgenres", res),
           this.setState({
             genres: res.data,
             genreID: res.data[0].id
@@ -34,7 +34,7 @@ class Search extends React.Component {
 
 handleSearch() {
  
-  console.log('this is the handle search ', this.state.genreID)
+  // console.log('this is the handle search ', this.state.genreID)
   //send and axios request to server
   axios.get("/search", {
         params: {
@@ -51,7 +51,7 @@ handleSearch() {
 }
 
 handleSelectChange(e) {
-  console.log('this is the genre id in select ', e.target.value)
+  // console.log('this is the genre id in select ', e.target.value)
   this.setState({
     genreID: e.target.value 
   })

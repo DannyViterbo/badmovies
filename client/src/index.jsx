@@ -21,6 +21,8 @@ class App extends React.Component {
     this.saveMovie = this.saveMovie.bind(this);
     this.deleteMovie = this.deleteMovie.bind(this);
     this.setMovie = this.setMovie.bind(this);
+    this.saveMovie = this.saveMovie.bind(this);
+    this.deleteMovie = this.deleteMovie.bind(this);
   }
 
   componentDidMount() {
@@ -40,16 +42,19 @@ class App extends React.Component {
   }
   
   setMovie(movies) {
-    console.log('these are the movies being passed in by the handle search ', movies)
+    // console.log('these are the movies being passed in by the handle search ', movies)
     this.setState({
       movies: movies
     })
   }
   
 
-  saveMovie() {
-    console.log("you saved this to your favorites");
+  saveMovie(movie) {
+    console.log("you saved this to your favorites", movie);
     // same as above but do something diff
+    axios.post("/save", movie)
+    
+    
   }
 
   deleteMovie() {
@@ -82,6 +87,8 @@ class App extends React.Component {
               this.state.showFaves ? this.state.favorites : this.state.movies
             }
             showFaves={this.state.showFaves}
+            saveMovie={this.saveMovie}
+            deleteMovie={this.deleteMovie}
           />
         </div>
       </div>

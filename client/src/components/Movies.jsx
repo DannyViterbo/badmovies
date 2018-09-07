@@ -3,12 +3,13 @@ import React from "react";
 class Movies extends React.Component {
   constructor(props) {
     super(props);
+    this.handleClick = this.handleClick.bind(this)
   }
 
   // Make an onClick for each list item. If the movies shown is the search results,
   // onClick add it to the database (do it in the main app, and pass down the function)
-handleClick(e) {
-  this.props.showFaves ? this.props.deleteMovie(e.movie.id) : this.props.saveMovie(e)
+handleClick(movie) {
+  this.props.showFaves ? this.props.deleteMovie(movie.id) : this.props.saveMovie(movie)
 }
   // If you're currently showing the fave list, delete the movie instead
   // You can tell which list is currently being rendered based on whether the prop "showFaves" is false (search results) or true (fave list) (within index.jsx)
@@ -19,7 +20,7 @@ handleClick(e) {
         {/* {console.log("These is them props", this.props.movies)} */}
         {this.props.movies.map(movie => {
           return (
-            <li key={movie.id} className="movie_item" onClick={()=> this.handleClick(movie)} >
+            <li key={movie.id} className="movie_item" onClick={() => {this.handleClick(movie)}} >
               <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} />
               <div className="movie_description">
                 <h2>{movie.original_title}</h2>
